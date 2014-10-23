@@ -1,0 +1,8 @@
+{
+  "name": "blog-post-author",
+  "version": "0.0.1",
+  "private": "true",
+  "dependencies": {
+    "firebase": "^1.1.2"
+  }
+}

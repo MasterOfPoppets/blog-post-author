@@ -28,10 +28,13 @@
     post = fs.readFileSync('./content/post.markdown', 'utf8');
     postMeta = JSON.parse(fs.readFileSync('./content/post.json', 'utf8'));
     
-    fb.child('blogEntries').child(postMeta.title).set({
+    fb.child('blogEntries').child(postMeta.url).set({
+        date: postMeta.date,
         post: post,
-        date: postMeta.date
+        stub: postMeta.stub,
+        title: postMeta.title
     }, function () {
         console.log('Finished pushing to firebase');
+        process.exit();
     });
 }());

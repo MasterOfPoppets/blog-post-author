@@ -1,4 +1,4 @@
-# Markdown blogging with Node.js and Firebase
+# Dynamic firebase blogging
 Of my fancy Firebase Markdown pusher
 
 This is a little bit more of an expansion to try and test to see if I can get this Jade include thing to work for me.

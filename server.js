@@ -1,14 +1,12 @@
-/*jshint node: true*/
-
 (function () {
   'use strict';
     
-  var fs = require('fs'),
-    Firebase = require('firebase'),
-    fb = new Firebase('https://fiery-heat-3490.firebaseio.com/'),
-    postFiles = [],
-    post = '',
-    postMeta = {};
+  var fs = require('fs')
+    , Firebase = require('firebase')
+    , fb = new Firebase('https://fiery-heat-3490.firebaseio.com/')
+    , postFiles = []
+    , post = ''
+    , postMeta = {};
   
   function getFiles(dir) {
     var filePath;
@@ -28,13 +26,14 @@
   post = fs.readFileSync('./content/post.markdown', 'utf8');
   postMeta = JSON.parse(fs.readFileSync('./content/post.json', 'utf8'));
   
-  fb.child('blogEntries').child(postMeta.url).set({
-    date: postMeta.date,
-    post: post,
-    stub: postMeta.stub,
-    title: postMeta.title
-  }, function () {
-    console.log('Finished pushing to firebase');
-    process.exit();
-  });
+  fb.child('blogEntries').child(postMeta.url).set(
+    { date: postMeta.date
+    , post: post
+    , stub: postMeta.stub
+    , title: postMeta.title
+    }
+    , function () {
+      console.log('Finished pushing to firebase');
+      process.exit();
+    });
 }());

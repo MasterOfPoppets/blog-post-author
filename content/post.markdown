@@ -11,9 +11,9 @@ So where to start?
 First of all, I thought my site would contain a structured content folder along the lines of this:
 
     [content]
-    ->	[my-first-post]
-        ->	post.json
-        ->	post.markdown
+    -> [my-first-post]
+       -> post.json
+       -> post.markdown
 
 Each post would be in its own seperate folder, corresponding to the link address on the site. Within this folder would be a small json file containing some metadata such as title and date, and there would be the post. This would be a [Markdown][] file, which would allow me to intuitively write posts that get rendered into beautiful HTML.
 

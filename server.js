@@ -6,6 +6,7 @@
     , fb = new Firebase('https://fiery-heat-3490.firebaseio.com/')
     , postFiles = []
     , post = ''
+    , stub = ''
     , postMeta = {};
   
   function getFiles(dir) {
@@ -24,14 +25,17 @@
   }
   
   post = fs.readFileSync('./content/post.markdown', 'utf8');
+  stub = fs.readFileSync('./content/stub.markdown', 'utf8');
   postMeta = JSON.parse(fs.readFileSync('./content/post.json', 'utf8'));
   
-  fb.child('blogEntries').child(postMeta.url).set(
+  fb.child('blogEntries').child(postMeta.url).setWithPriority(
     { date: postMeta.date
     , post: post
-    , stub: postMeta.stub
+    , stub: stub
     , title: postMeta.title
+    , url: postMeta.url
     }
+    , Firebase.ServerValue.TIMESTAMP
     , function () {
       console.log('Finished pushing to firebase');
       process.exit();
